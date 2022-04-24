@@ -126,7 +126,7 @@ $feature_conditions = get_feature_conditions($pdo);
                         </div>
                         <div class="d-flex justify-content-end">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault<?= h($agency_information->id); ?>">
                             </div>
                         </div>
                     </div>
