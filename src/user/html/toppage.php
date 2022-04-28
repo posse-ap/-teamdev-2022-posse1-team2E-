@@ -161,7 +161,7 @@ $feature_conditions = get_feature_conditions($pdo);
             </a>
         </div>
         <div class="text-center">
-            <a href="">
+            <a href="./apply.php">
                 <button type="button" class="btn btn-success m-5">比較する</button>
             </a>
         </div>
