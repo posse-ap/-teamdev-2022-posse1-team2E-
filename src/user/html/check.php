@@ -98,21 +98,24 @@ echo $email.'にメールで送りましたのでご確認ください。'."\n";
 $mail_sub = 'お問い合わせを受け付けました。';
 $mail_body = $name.'様、ご協力ありがとうございました。';
 $mail_body = html_entity_decode($mail_body,ENT_QUOTES,"UTF-8");
-$from = 'yohei0910@softbank.ne.jp';
-$header="From: {$from}\nReply-To: {$from}\nContent-Type: text/plain;";
+$from = 'test@test.com';
+// $mail_header .= "MIME-Version: 1.0\n";
+// $mail_header .= "Content-Transfer-Encoding: BASE64\n";
+// $mail_header .= "Content-Type: text/plain; charset=UTF-8\n";
+$mail_header="From: {$from}\nReply-To: {$from}\nContent-Type: text/plain;";
 
 
 mb_language('Japanese');
 mb_internal_encoding("UTF-8");
 
-if(mb_send_mail($email, $mail_sub, $mail_body,$header,"-f yohei0910@softbank.ne.jp")) {
+if(mb_send_mail($email, $mail_sub, $mail_body,$mail_header,"-f test@test.com")) {
   echo "メールを送信しました";
 } else {
   echo "メールの送信に失敗しました";
 };
 
 
-echo phpinfo();
+// echo phpinfo();
 
 ?>
 </div>
