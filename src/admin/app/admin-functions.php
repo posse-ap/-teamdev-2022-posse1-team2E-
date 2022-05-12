@@ -71,9 +71,9 @@ function add_agency_information($pdo)
         $industrys[] = 7;
         print_r($industrys);
     }
-    $industry_id = implode("-", $industrys);
+    $industry_id = implode("," , $industrys);
 
-    echo $industry_id;
+    
 
 
 
@@ -84,9 +84,9 @@ function add_agency_information($pdo)
     if (isset($_POST['major2'])) {
         $majors[] = 2;
     }
-    $major_id = implode("-", $majors);
+    $major_id = implode(",", $majors);
 
-    echo $major_id;
+
 
 
 
@@ -106,9 +106,8 @@ function add_agency_information($pdo)
         $features[] = 5;
     }
 
-    $feature_id = implode("-", $features);
-    echo $feature_id;
-
+    $feature_id = implode(",", $features);
+    
 
 
 

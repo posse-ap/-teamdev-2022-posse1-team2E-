@@ -25,12 +25,35 @@ function getPdoInstance()
     }
 }
 
+// if(isset($_POST['industry'])) {
+//     // セレクトボックスで選択された値を受け取る
+
+//     $industry = $_POST['industry'];
+//     // 受け取った値を画面に出力
+//     echo $industry;
+    
+// }
+
+
+
+// $industry = $_POST['check'];
+// echo $industry;
+
+// foreach($industry as $animal_checked){
+//     echo '<span>'. $industry_checked . '</span> ';
+//     }
+
+
 function get_agency_informations($pdo)
 {
-    $stmt = $pdo->query("SELECT * FROM agency_information");
+    $stmt = $pdo->query("SELECT * FROM agency_information ");
     $agency_informations = $stmt->fetchAll();
     return $agency_informations;
 }
+
+// -- WHERE industry_id in (1) 
+// --     AND  major_id in (2) 
+// --     AND  feature_id in (2)");
 
 function get_industry_conditions($pdo)
 {
@@ -52,3 +75,7 @@ function get_feature_conditions($pdo)
     $feature_conditions = $stmt->fetchAll();
     return $feature_conditions;
 }
+
+
+
+

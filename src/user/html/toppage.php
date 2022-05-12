@@ -1,6 +1,6 @@
 <?php
 
-// echo 'わーーーひらけたーー';
+
 
 require_once(__DIR__  . '/../app/config.php');
 
@@ -11,13 +11,24 @@ $industry_conditions = get_industry_conditions($pdo);
 $major_conditions = get_major_conditions($pdo);
 $feature_conditions = get_feature_conditions($pdo);
 
-if(isset($_POST["sort_change"])) {
-    // セレクトボックスで選択された値を受け取る
-    $sort_change = $_POST["sort_change"];
-    // 受け取った値を画面に出力
-    echo $sort_change;
+// if(isset($_POST["sort_change"])) {
+//     // セレクトボックスで選択された値を受け取る
+
+//     $sort_change = $_POST["sort_change"];
+//     // 受け取った値を画面に出力
+//     echo $sort_change;
     
-  }
+//   }
+
+// $stmt = $pdo->query("SELECT * FROM agency_information 
+// WHERE industry_id in (1) 
+// AND  major_id in (1) 
+// AND  feature_id in (1)");
+
+// $agency_informations = $stmt->fetchAll();
+
+
+
 
 ?>
 
@@ -72,23 +83,27 @@ if(isset($_POST["sort_change"])) {
         </div>
         <div class="main-container d-flex raw">
             <div class="main-left-content col-md-3">
+            <form method="post" action="../app/user-functions.php">
                 <div class="mt-5 ms-5 me-5 p-3 search">
                     <div class="search-title p-1 text-center">業種</div>
                     <?php foreach ($industry_conditions as $industry_condition) : ?>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="industry[]" value="<?= $industry_condition->id  ?>" id="flexCheckDefault<?= $industry_condition->id  ?>">
                                 <?= h($industry_condition->industry); ?>
                             </label>
                         </div>
                     <?php endforeach; ?>
                 </div>
+            </form>
+            
+ 
                 <div class="mt-4 ms-5 me-5 p-3 search">
                     <div class="search-title p-1 text-center">文理</div>
                     <?php foreach ($major_conditions as $major_condition) : ?>
                         <div class="form-check mt-1">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="major[]" value="<?= $major_condition->id  ?>" id="flexCheckDefault">
                                 <?= h($major_condition->major); ?>
                             </label>
                         </div>
@@ -98,28 +113,19 @@ if(isset($_POST["sort_change"])) {
                     <div class="search-title p-1 text-center">特徴</div>
                     <?php foreach ($feature_conditions as $feature_condition) : ?>
                         <div class="form-check mt-1">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="feature[]" value="<?= $feature_condition->id ?>" id="flexCheckDefault">
                                 <?= h($feature_condition->feature); ?>
                             </label>
                         </div>
                     <?php endforeach; ?>
-                </div>
+                </div> 
+            <!-- </form>
+            <input type="submit" value="絞り込む"> -->
+                
             </div>
             <div class="main-center-content col-md-6">
-                <div class="mt-3 text-center drop-down p-1">
-                    <div>並び替え</div>
-                        <form action="toppage.php" method = "POST">
-                        <select name="sort_change">
-                            <option value="name">五十音</option>
-                            <option value="bases_numbers">拠点数</option>
-                            <option value="achievements">実績数</option>
-                            <option value="contract_numbers">契約数</option>
-                        </select>
-                        <input type="submit"name="submit"value="並べ替える"/>
-                    </form>
-                </div>
-                <?php foreach ($agency_informations as $agency_information) : ?>
+             <?php foreach ($agency_informations as $agency_information) : ?> 
                     <div class="mt-4 ms-5 me-5 mb-5 p-3 company-content-wrapper">
                         <div class="d-flex company-content">
                             <a href="">
@@ -138,15 +144,40 @@ if(isset($_POST["sort_change"])) {
                         </div>
                         <div class="d-flex justify-content-end">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" name='looked' id="flexCheckDefault<?= h($agency_information->id);?>">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault<?= h($agency_information->id);?>">
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+                <?php foreach ($agency_informations as $agency_information) : ?>
+
+                    <div class="mt-4 ms-5 me-5 mb-5 p-3 company-content-wrapper">
+                        <div class="d-flex company-content">
+                            <a href="">
+                                <div class="logo-container p-1">
+                                    <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="">
+                                </div>
+                            </a>
+                            <div>
+                                <a href="" class="text-decoration-none">
+                                    <div class="company-content-title p-1"><?= h($agency_information->agency_name); ?></div>
+                                </a>
+                                <div class="p-3 company-content-paragraph">
+                                    <?= h($agency_information->catch_copy); ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault<?= h($agency_information->id);?>">
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
-            <div class="main-right-content col-md-3" name='rightContents'>
+            <div class="main-right-content col-md-3">
             <?php foreach ($agency_informations as $agency_information) : ?>
-                <a href="./company.html" class="text-decoration-none display-none" id="rightContent<?= h($agency_information->id);?>">
+                <a href="./company.html" class="text-decoration-none">
                     <div class="d-flex checked-content m-5 p-3">
                         <div class="me-2">
                         <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="">
@@ -159,7 +190,7 @@ if(isset($_POST["sort_change"])) {
             <?php endforeach; ?>
             </div>
         </div>
-        <div class="d-flex justify-content-center icons">
+        <!-- <div class="d-flex justify-content-center icons">
             <a href="">
                 <span class="material-icons">
                     navigate_before
@@ -185,7 +216,7 @@ if(isset($_POST["sort_change"])) {
                     navigate_next
                 </span>
             </a>
-        </div>
+        </div> -->
         <div class="text-center">
             <a href="">
                 <button type="button" class="btn btn-success m-5">比較する</button>
