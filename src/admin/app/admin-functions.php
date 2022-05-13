@@ -71,8 +71,7 @@ function add_agency_information($pdo)
         $industrys[] = 7;
         print_r($industrys);
     }
-    $industry_id = implode("," , $industrys);
-
+    // $industry_id = implode("," , $industrys);
     
 
 
@@ -84,7 +83,7 @@ function add_agency_information($pdo)
     if (isset($_POST['major2'])) {
         $majors[] = 2;
     }
-    $major_id = implode(",", $majors);
+    // $major_id = implode(",", $majors);
 
 
 
@@ -106,7 +105,7 @@ function add_agency_information($pdo)
         $features[] = 5;
     }
 
-    $feature_id = implode(",", $features);
+    // $feature_id = implode(",", $features);
     
 
 
@@ -124,10 +123,10 @@ function add_agency_information($pdo)
         contract_numbers,
         bases_numbers,
         support,
-        place,
-        industry_id,
-        major_id,
-        feature_id
+        place
+        -- industry_id,
+        -- major_id,
+        -- feature_id
         ) VALUES(
         :agency_name,
         :catch_copy,
@@ -139,10 +138,10 @@ function add_agency_information($pdo)
         :contract_numbers,
         :bases_numbers,
         :support,
-        :place,
-        :industry_id,
-        :major_id,
-        :feature_id
+        :place
+        -- :industry_id,
+        -- :major_id,
+        -- :feature_id
     )');
 
     $stmt->bindValue(':agency_name', $agency_name);
@@ -156,9 +155,9 @@ function add_agency_information($pdo)
     $stmt->bindValue(':bases_numbers', $bases_numbers);
     $stmt->bindValue(':support', $support);
     $stmt->bindValue(':place', $place);
-    $stmt->bindValue(':industry_id', $industry_id);
-    $stmt->bindValue(':major_id', $major_id);
-    $stmt->bindValue(':feature_id', $feature_id);
+    // $stmt->bindValue(':industry_id', $industry_id);
+    // $stmt->bindValue(':major_id', $major_id);
+    // $stmt->bindValue(':feature_id', $feature_id);
 
     // echo $stmt;
 

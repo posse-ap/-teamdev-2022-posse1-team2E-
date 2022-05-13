@@ -20,14 +20,19 @@ $feature_conditions = get_feature_conditions($pdo);
     
 //   }
 
-// $stmt = $pdo->query("SELECT * FROM agency_information 
-// WHERE industry_id in (1) 
-// AND  major_id in (1) 
-// AND  feature_id in (1)");
+$stmt = $pdo->query("SELECT * FROM agency_information 
+JOIN agency_industry AS itt ON  agency_information.id = itt.agency_id
+JOIN industry_condition ON itt.industry_id = industry_condition.id
+JOIN agency_major AS ittt ON  agency_information.id = ittt.agency_id
+JOIN major_condition ON ittt.major_id = major_condition.id
+JOIN agency_feature AS itti ON  agency_information.id = itti.agency_id
+JOIN feature_condition ON itti.feature_id = feature_condition.id
+WHERE industry_condition.id IN (2)  AND major_condition.id IN (2) AND feature_condition.id IN (2)
+GROUP BY agency_information.id");
 
-// $agency_informations = $stmt->fetchAll();
+$agency_information = $stmt->fetchAll();
 
-
+print_r($agency_information);
 
 
 ?>
@@ -126,31 +131,6 @@ $feature_conditions = get_feature_conditions($pdo);
             </div>
             <div class="main-center-content col-md-6">
              <?php foreach ($agency_informations as $agency_information) : ?> 
-                    <div class="mt-4 ms-5 me-5 mb-5 p-3 company-content-wrapper">
-                        <div class="d-flex company-content">
-                            <a href="">
-                                <div class="logo-container p-1">
-                                    <img src="../uploaded_img/agency<?= h($agency_information->id); ?>.png" alt="">
-                                </div>
-                            </a>
-                            <div>
-                                <a href="" class="text-decoration-none">
-                                    <div class="company-content-title p-1"><?= h($agency_information->agency_name); ?></div>
-                                </a>
-                                <div class="p-3 company-content-paragraph">
-                                    <?= h($agency_information->catch_copy); ?>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-end">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault<?= h($agency_information->id);?>">
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-                <?php foreach ($agency_informations as $agency_information) : ?>
-
                     <div class="mt-4 ms-5 me-5 mb-5 p-3 company-content-wrapper">
                         <div class="d-flex company-content">
                             <a href="">
