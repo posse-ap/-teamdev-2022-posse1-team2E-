@@ -1,12 +1,17 @@
 header{
-    background-color: #52A49A!important;
+    background-color: #52A49A;
     height: 100px;
     width: 100%;
     max-width: 100%;
-    color: white!important;
+    color: white;
 }
-.navbar-brand{
-    display: none;
+.navigations{
+    margin-bottom: 0;
+}
+.navigation{
+    color: white;
+    text-decoration: none;
+    list-style: none;
 }
 main{
     background-color: #ebedf2;
@@ -97,9 +102,6 @@ main{
     display: none;
 }
 @media screen and (max-width:480px){
-    header{
-        height: 50px;
-    }
     .main-left-content{
         display: none;
     }
@@ -107,15 +109,6 @@ main{
         display: block;
     }
     .button{
-        display: block;
-    }
-    .navbar{
-        background-color: #52A49A;
-    }
-    .headerTitle{
-        display: none;
-    }
-    .navbar-brand{
         display: block;
     }
 }
