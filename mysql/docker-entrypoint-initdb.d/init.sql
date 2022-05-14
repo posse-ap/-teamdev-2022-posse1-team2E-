@@ -109,18 +109,18 @@ industry_id INT NOT NULL
 
 );
 
-INSERT INTO agency_industry SET
-agency_id = 1,
-industry_id = 1;
-INSERT INTO agency_industry SET
-agency_id = 1,
-industry_id = 2;
-INSERT INTO agency_industry SET
-agency_id = 2,
-industry_id = 3;
-INSERT INTO agency_industry SET
-agency_id = 2,
-industry_id = 4;
+-- INSERT INTO agency_industry SET
+-- agency_id = 1,
+-- industry_id = 1;
+-- INSERT INTO agency_industry SET
+-- agency_id = 1,
+-- industry_id = 2;
+-- INSERT INTO agency_industry SET
+-- agency_id = 2,
+-- industry_id = 3;
+-- INSERT INTO agency_industry SET
+-- agency_id = 2,
+-- industry_id = 4;
 
 
 DROP TABLE IF EXISTS agency_major;
@@ -132,12 +132,12 @@ major_id INT NOT NULL
 
 );
 
-INSERT INTO agency_major SET
-agency_id = 1,
-major_id = 1;
-INSERT INTO agency_major SET
-agency_id = 1,
-major_id = 2;
+-- INSERT INTO agency_major SET
+-- agency_id = 1,
+-- major_id = 1;
+-- INSERT INTO agency_major SET
+-- agency_id = 1,
+-- major_id = 2;
 
 
 DROP TABLE IF EXISTS agency_feature;
@@ -149,18 +149,18 @@ feature_id INT NOT NULL
 
 );
 
-INSERT INTO agency_feature SET
-agency_id = 1,
-feature_id = 1;
-INSERT INTO agency_feature SET
-agency_id = 1,
-feature_id = 2;
-INSERT INTO agency_feature SET
-agency_id = 2,
-feature_id = 3;
-INSERT INTO agency_feature SET
-agency_id = 2,
-feature_id = 4;
+-- INSERT INTO agency_feature SET
+-- agency_id = 1,
+-- feature_id = 1;
+-- INSERT INTO agency_feature SET
+-- agency_id = 1,
+-- feature_id = 2;
+-- INSERT INTO agency_feature SET
+-- agency_id = 2,
+-- feature_id = 3;
+-- INSERT INTO agency_feature SET
+-- agency_id = 2,
+-- feature_id = 4;
 
 
 

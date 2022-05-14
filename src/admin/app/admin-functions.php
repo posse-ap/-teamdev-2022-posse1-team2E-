@@ -45,33 +45,34 @@ function add_agency_information($pdo)
 
     if (isset($_POST['industry1'])) {
         $industrys[] = 1;
-        print_r($industrys);
+        // print_r($industrys);
     }
     if (isset($_POST['industry2'])) {
         $industrys[] = 2;
-        print_r($industrys);
+        // print_r($industrys);
     }
     if (isset($_POST['industry3'])) {
         $industrys[] = 3;
-        print_r($industrys);
+        // print_r($industrys);
     }
     if (isset($_POST['industry4'])) {
         $industrys[] = 4;
-        print_r($industrys);
+        // print_r($industrys);
     }
     if (isset($_POST['industry5'])) {
         $industrys[] = 5;
-        print_r($industrys);
+        // print_r($industrys);
     }
     if (isset($_POST['industry6'])) {
         $industrys[] = 6;
-        print_r($industrys);
+        // print_r($industrys);
     }
     if (isset($_POST['industry7'])) {
         $industrys[] = 7;
-        print_r($industrys);
+        // print_r($industrys);
     }
     // $industry_id = implode("," , $industrys);
+    // print_r($industrys);
     
 
 
@@ -124,9 +125,6 @@ function add_agency_information($pdo)
         bases_numbers,
         support,
         place
-        -- industry_id,
-        -- major_id,
-        -- feature_id
         ) VALUES(
         :agency_name,
         :catch_copy,
@@ -139,9 +137,6 @@ function add_agency_information($pdo)
         :bases_numbers,
         :support,
         :place
-        -- :industry_id,
-        -- :major_id,
-        -- :feature_id
     )');
 
     $stmt->bindValue(':agency_name', $agency_name);
@@ -181,9 +176,14 @@ function add_agency_information($pdo)
     $temp_path = $uploading_img['tmp_name'];
     move_uploaded_file($temp_path, $upload_dir);
     // echo '成功';
-    echo $file_err;
+    // echo $file_err;
     // }
 }
+
+
+
+
+
 function edit_agency_information($pdo)
 {
     $agency_name = $_POST["agency_name"];
@@ -218,7 +218,7 @@ function edit_agency_information($pdo)
         ':id' => $_GET["id"]
     ));
 
-    echo $agency_name;
+    // echo $agency_name;
 
     echo '情報を更新しました';
 }
