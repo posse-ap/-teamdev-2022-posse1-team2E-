@@ -72,7 +72,7 @@ function add_agency_information($pdo)
         // print_r($industrys);
     }
     // $industry_id = implode("," , $industrys);
-    // print_r($industrys);
+    print_r($industrys);
     
 
 
@@ -139,6 +139,8 @@ function add_agency_information($pdo)
         :place
     )');
 
+
+
     $stmt->bindValue(':agency_name', $agency_name);
     $stmt->bindValue(':catch_copy', $catch_copy);
     $stmt->bindValue(':detail', $detail);
@@ -157,6 +159,32 @@ function add_agency_information($pdo)
     // echo $stmt;
 
     $stmt->execute();
+
+    $id = $pdo -> lastInsertId();
+    printf($id);
+    
+    foreach($industrys as $industry){
+        $stmt = $pdo->prepare('INSERT INTO agency_industry(
+            agency_id,
+            industry_id
+            ) VALUES(
+            :id,
+            :industry_id
+
+    
+        )');
+        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':industry_id', $industry);
+        $stmt->execute();
+        
+
+    }
+
+
+    
+
+
+
 
     $stmt = $pdo->query("SELECT MAX(id) FROM agency_information");
     $now_id = $stmt->fetch(PDO::FETCH_ASSOC);
