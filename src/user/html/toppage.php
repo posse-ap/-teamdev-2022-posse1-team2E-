@@ -27,16 +27,12 @@ JOIN agency_major AS ittt ON  agency_information.id = ittt.agency_id
 JOIN major_condition ON ittt.major_id = major_condition.id
 JOIN agency_feature AS itti ON  agency_information.id = itti.agency_id
 JOIN feature_condition ON itti.feature_id = feature_condition.id
-WHERE industry_condition.id IN (5)  AND major_condition.id IN (1) AND feature_condition.id IN (1)
+WHERE industry_condition.id IN (5)  AND major_condition.id IN (1) AND feature_condition.id IN (3)
 GROUP BY agency_information.id");
 
-// $agency_information = $stmt->fetchAll();
+$agency_informations = $stmt->fetchAll();
 
-// print_r($agency_information);
 
-// print_r($agency_information);
-// $orderId = $pdo->lastInsertId();
-// print_r($orderId);
 
 
 
@@ -135,7 +131,7 @@ GROUP BY agency_information.id");
                 
             </div>
             <div class="main-center-content col-md-6">
-             <?php foreach ($agency_informations as $agency_information) : ?> 
+            <?php foreach ($agency_informations as $agency_information) : ?> 
                     <div class="mt-4 ms-5 me-5 mb-5 p-3 company-content-wrapper">
                         <div class="d-flex company-content">
                             <a href="">

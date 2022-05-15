@@ -179,6 +179,40 @@ function add_agency_information($pdo)
         
 
     }
+    foreach($majors as $major){
+        $stmt = $pdo->prepare('INSERT INTO agency_major(
+            agency_id,
+            major_id
+            ) VALUES(
+            :id,
+            :major_id
+
+    
+        )');
+        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':major_id', $major);
+        $stmt->execute();
+
+    }   
+        
+    foreach($features as $feature){
+        $stmt = $pdo->prepare('INSERT INTO agency_feature(
+            agency_id,
+            feature_id
+            ) VALUES(
+            :id,
+            :feature_id
+
+    
+        )');
+        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':feature_id', $feature);
+        $stmt->execute();
+        
+
+    }
+
+    
 
 
     
