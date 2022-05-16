@@ -72,7 +72,7 @@ function add_agency_information($pdo)
         // print_r($industrys);
     }
     // $industry_id = implode("," , $industrys);
-    print_r($industrys);
+    // print_r($industrys);
     
 
 
@@ -161,7 +161,7 @@ function add_agency_information($pdo)
     $stmt->execute();
 
     $id = $pdo -> lastInsertId();
-    printf($id);
+    // printf($id);
     
     foreach($industrys as $industry){
         $stmt = $pdo->prepare('INSERT INTO agency_industry(
