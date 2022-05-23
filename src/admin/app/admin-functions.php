@@ -289,6 +289,7 @@ function edit_agency_claim_status($pdo)
 
 function edit_progress_status($pdo)
 {
+    // これ違うエージェンシーがテーブル共有してるからダメだ
     $progress_arr = [
         '状況0',
         '状況1',
