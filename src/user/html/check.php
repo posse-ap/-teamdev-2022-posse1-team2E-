@@ -31,6 +31,8 @@ $address = $_POST['address'];
 $phone = $_POST['phone'];
 $birthday = $_POST['birthday'];
 $university = $_POST['university'];
+$progress = 0;
+
 
 
 $agencys = array();
@@ -98,7 +100,7 @@ if($birthday==''){
 echo '</li>'."\n";
 echo '</ul>'."\n";
 
-$sql = 'INSERT INTO inquiry(name,birthday,university,phone,address,email)VALUES("'.$name.'","'.$birthday.'","'.$university.'","'.$phone.'","'.$address.'","'.$email.'")';
+$sql = 'INSERT INTO inquiry(name,birthday,university,phone,address,email,progress)VALUES("'.$name.'","'.$birthday.'","'.$university.'","'.$phone.'","'.$address.'","'.$email.'","'.$progress.'")';
 $stmt = $db -> prepare($sql);
 $stmt -> execute();
 

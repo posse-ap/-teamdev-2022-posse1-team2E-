@@ -286,3 +286,31 @@ function edit_agency_claim_status($pdo)
     echo $claim_status_arr[$claim_status];
     echo 'に更新しました';
 }
+
+function edit_progress_status($pdo)
+{
+    $progress_arr = [
+        '状況0',
+        '状況1',
+        '状況2',
+        '状況3',
+        '状況4'
+    ];
+    $progress = $_POST["progress"];
+    $id = $_POST["id"];
+    $name = $_POST["name"];
+    
+    $stmt = $pdo->prepare('UPDATE inquiry SET
+        progress = :progress
+        WHERE id = :id');
+
+    $stmt->execute(array(
+        ':progress' => $progress,
+        ':id' => $id
+    ));
+
+    echo $name;
+    echo 'の請求ステータスを';
+    echo $progress_arr[$progress];
+    echo 'に更新しました';
+}
