@@ -28,7 +28,20 @@ http://localhost/
 管理者画面ログイン情報
 
 ```bash
-メールアドレス：test@posse-ap.com
+ブーザーへのログイン
+メールアドレス：voozer-inc@voozer.com
+パスワード：password
+
+エージェント１（マイナビエージェント）へのログイン
+メールアドレス：mynaviagent@mynavi.com
+パスワード：password
+
+エージェント2（キャリアエージェント）へのログイン
+メールアドレス：careeragent@career.com
+パスワード：password
+
+エージェント3（ディグアップキャリア）へのログイン
+メールアドレス：digupcareer@digupcareer.com
 パスワード：password
 ```
 
